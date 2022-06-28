@@ -53,15 +53,64 @@
         </div>
 
         <div class="widget" x-data="{
-            sentence:'',
-            longestWord:'',
+            
+            sentence:'',            
             longWordMessage:'',
+            shortWordMessage:'',
+            sumMessage:'',
+            sumLength:0,
+            findLong() {
+                this.longWordMessage = longestWord(this.sentence)
+
+            },
+            findShort(){
+                this.shortWordMessage = shortestWord(this.sentence)
+            },
+            findSum(){
+                this.sumMessage = wordLengths(this.sentence, this.sumLength)
+                alert()
+            }
+
         }">
-        <h2>Word Crush widget</h2>
-        <div class="input">
-            <label for="usage">Please enter the sentence for the word puzzle you want to solve: </label>
-            <input type="text" x-model="sentence" id="usage">
-        </div>
+            <h2>Word Crush widget</h2>
+            <div class="input">
+                <h3>Longest word puzzle</h3>
+                <label for="longWord">Please enter the sentence for the longest word puzzle: </label>
+                <input type="text" x-model="sentence" id="longWord">
+            </div>
+            <div class="message" x-text="longWordMessage">
+                Longest word to be displayed here...
+            </div>
+            <div>
+                <button x-on:click="findLong">Find the longest word in the sentence</button>
+            </div>
+
+            <div class="input">
+                <h3>Shortest word puzzle</h3>
+                <label for="shortWord">Please enter the sentence for shortest word puzzle : </label>
+                <input type="text" x-model="sentence" id="shortWord">
+            </div>
+            <div class="message" x-text="shortWordMessage">
+                shortest word to be displayed here...
+            </div>
+            <div>
+                <button x-on:click="findShort">Find the shortest word in the sentence</button>
+            </div>
+
+            <div class="input">
+                <h3>Sum the length of each word in a sentence</h3>
+                <label for="sum">Please enter the sentence, so we find the sum of the words in a sentence : </label>
+                <input type="text" x-model="sentence" id="sum">
+            </div>
+            <div class="message" x-text="sumLength">
+                sum of the words in a sentence to be dispayed here...
+            </div>
+            <div>
+                <button x-on:click="findSum">Sum of the words in a sentence</button>
+            </div>
+
+
+            
         </div>
     </div>
 </body>

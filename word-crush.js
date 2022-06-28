@@ -24,7 +24,7 @@ function longestWord(longWord){
     console.log(shortWord);
     return result; 
   }
-  console.log(shortestWord('The dog jumped over the shipyarddddd fence'));
+  console.log(shortestWord);
   
   
   function wordLengths(sumWord){ 
@@ -36,6 +36,6 @@ function longestWord(longWord){
        }
       return sum;
    }  
-  console.log(wordLengths('The dog jumped over the shipyardddddyyy fence'));
+  console.log(wordLengths);
   
   
