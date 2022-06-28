@@ -1,27 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bootcamp Widget</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="greet.js"></script>
+    <script src="enough-airtime.js"></script>
+    <script src="word-crush.js"></script>
+    <script src="greet-widget.js" defer></script>
+    <script src="enough-airtime-widget.js" defer></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script>
+        console.log(greet("Tumi"))
+    </script>
 </head>
-<style>
-    body {
-        background-color: blue;
-        align-content: center;
-    }
-
-    h1 {
-        background-color: whitesmoke;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-        font-size: medium;
-        text-align: center;
-    }
-
-</style>
 
 <body>
-    <h1>AlpineJS Bootcamp Widgets</h1>
+    <h1>My AlpineJS Bootcamp Widgets</h1>
+    <div class="widgets">
+        <div class="widget" x-data="greetWidget">
+            <h2>Greet Widget</h2>
+
+            <div x-show="message.length>0" class="message" x-text="message">
+                You will be greeted here...
+            </div>
+            <label for="name">Please enter your name: </label>
+            <input type="text" x-model="name" id="name">
+            <button x-on:click="greetMe">Greet!</button>
+        </div>
+
+        <div class="widget" x-data="enoughAirtimeWidget">
+            <h2>Enough Airtime Widget</h2>
+            <div class="input">
+                <label for="usage">Please enter your projected airtime usage: </label>
+                <input type="text" x-model="airtimeUsage" id="usage">
+            </div>
+            <div class="input">
+                <label for="amount">Amount Available: </label>
+                <input type="text" x-model="availableAmount" id="amount">
+            </div>
+
+            <div class="message" x-text="airtimeMessage">
+                Number/Amount of airtime left displayed here...
+            </div>
+
+            <div>
+                <button x-on:click="calculate">Calculate airtime usage</button>
+            </div>
+        </div>
+
+        <div class="widget" x-data="{
+            sentence:'',
+            longestWord:'',
+            longWordMessage:'',
+        }">
+        <h2>Word Crush widget</h2>
+        <div class="input">
+            <label for="usage">Please enter the sentence for the word puzzle you want to solve: </label>
+            <input type="text" x-model="sentence" id="usage">
+        </div>
+        </div>
+    </div>
 </body>
+
 </html>

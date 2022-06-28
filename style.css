@@ -1,0 +1,39 @@
+
+.body {
+    background-color: rgb(50, 165, 42);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.message {
+    background-color: aquamarine;
+    padding: 1em;
+    margin: 1em;
+}
+
+.input>label {
+
+    display: inline-block;
+    width: 15em;
+    padding: 0.5em;
+    margin: 0.5em;
+    font-weight: bold;
+}
+
+.input>input[type="text"] {
+    padding: 0.5em;
+    margin: 0.5em;
+    font-weight: bold;
+}
+
+.widgets {
+    display: flex;
+}
+
+.widget {
+    flex: 1;
+    border: 1px solid lightgrey;
+    margin: 1em;
+    padding: 1em;
+    border-radius: 0.5em;
+}
+
