@@ -68,7 +68,7 @@
             },
             findSum(){
                 this.sumMessage = wordLengths(this.sentence, this.sumLength)
-                alert()
+           
             }
 
         }">
@@ -98,11 +98,11 @@
             </div>
 
             <div class="input">
-                <h3>Sum the length of each word in a sentence</h3>
-                <label for="sum">Please enter the sentence, so we find the sum of the words in a sentence : </label>
+                <h3>Sum each word in a sentence</h3>
+                <label for="sum">Please enter the sentence, for words to be summed up : </label>
                 <input type="text" x-model="sentence" id="sum">
             </div>
-            <div class="message" x-text="sumLength">
+            <div class="message" x-text="sumMessage">
                 sum of the words in a sentence to be dispayed here...
             </div>
             <div>
