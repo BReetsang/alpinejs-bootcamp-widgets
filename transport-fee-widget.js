@@ -1,18 +1,16 @@
-
 document.addEventListener('alpine:init', () => {
 
-    Alpine.data('greetWidget', function () {
+    Alpine.data('transportFeeWidget', function () {
         return {
-            name: '',
+            shift:'',
             message: '',
-            greetMe() {
-                this.message = greet(this.name);
+            shiftFee(){
+                this.message = transportFee(this.shift);
                 setTimeout(() => {
                     this.message = '';
-                    this.name = '';
+                    this.shift = '';
                 }, 3000);
             }
-
         }
 
     });

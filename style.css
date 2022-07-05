@@ -1,6 +1,13 @@
+@media (min-width: 768px) {
+    .widgets {
+        display: flex;
+        background-color: #1e9c42;
+        align-content: center;
+    }
+}
 
 .body {
-    background-color: rgb(50, 165, 42);
+    
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -24,16 +31,13 @@
     margin: 0.5em;
     font-weight: bold;
 }
-
-.widgets {
-    display: flex;
-}
-
+ 
 .widget {
     flex: 1;
     border: 1px solid lightgrey;
-    margin: 1em;
+    margin: 0.5em;
     padding: 1em;
     border-radius: 0.5em;
+    background-color: rgb(85, 147, 85);
 }
 

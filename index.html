@@ -8,28 +8,46 @@
     <title>Bootcamp Widget</title>
     <link rel="stylesheet" href="style.css">
     <script src="greet.js"></script>
+    <script src="transport-fee.js"></script>
     <script src="enough-airtime.js"></script>
+    <script src="total-phone-bill.js"></script>
     <script src="word-crush.js"></script>
     <script src="greet-widget.js" defer></script>
     <script src="enough-airtime-widget.js" defer></script>
+    <script src="total-phone-bill-widget.js" defer></script>
+    <script src="transport-fee-widget.js" defer></script>
+    <script src="word-crush-widget.js" defer></script>
     <script src="//unpkg.com/alpinejs" defer></script>
-    <script>
-        console.log(greet("Tumi"))
-    </script>
-</head>
+  </head>
 
 <body>
     <h1>My AlpineJS Bootcamp Widgets</h1>
     <div class="widgets">
         <div class="widget" x-data="greetWidget">
-            <h2>Greet Widget</h2>
-
+            <h2>Greet Widget</h2><br>
             <div x-show="message.length>0" class="message" x-text="message">
-                You will be greeted here...
+                <span>You will be greeted here...</span>
             </div>
-            <label for="name">Please enter your name: </label>
+            <label for="name"><strong>Please enter your name: </strong></label>
             <input type="text" x-model="name" id="name">
             <button x-on:click="greetMe">Greet!</button>
+        </div>
+
+        <div class="widget" x-data="transportFeeWidget">
+            <h2>Transport Widget</h2>            
+            <p><strong>Choose the shift you are working today:</strong></p>
+            <form>
+                <input type="radio" id="morning" value="morning" x-model="shift">
+                <label for="morning">morning</label><br>
+                <input type="radio" id="afternoon" name="shift" value="afternoon" x-model="shift">
+                <label for="afternoon">afternoon</label><br>
+                <input type="radio" id="nightShift" name="shift" value="nightShift" x-model="shift">
+                <label for="nightShift">nightShift</label><br><br>
+                <strong>Your transport fee will be displayed after choosing your shift... </strong><span x-text="shiftFee"></span>       
+            </form>
+            <div x-show="message.length>0" class="message" x-text="message">
+                Your transport fees will be shown here...
+            </div>   
         </div>
 
         <div class="widget" x-data="enoughAirtimeWidget">
@@ -43,74 +61,65 @@
                 <input type="text" x-model="availableAmount" id="amount">
             </div>
 
-            <div class="message" x-text="airtimeMessage">
+            <div x-show="airtimeMessage" class="message" x-text="airtimeMessage">
                 Number/Amount of airtime left displayed here...
             </div>
 
             <div>
-                <button x-on:click="calculate">Calculate airtime usage</button>
+                <button x-on:click="calculate">Calculate airtime balance</button>
             </div>
         </div>
 
-        <div class="widget" x-data="{
-            
-            sentence:'',            
-            longWordMessage:'',
-            shortWordMessage:'',
-            sumMessage:'',
-            sumLength:0,
-            findLong() {
-                this.longWordMessage = longestWord(this.sentence)
-
-            },
-            findShort(){
-                this.shortWordMessage = shortestWord(this.sentence)
-            },
-            findSum(){
-                this.sumMessage = wordLengths(this.sentence, this.sumLength)
-           
-            }
-
-        }">
-            <h2>Word Crush widget</h2>
+        <div class="widget" x-data="totalPhoneBillWidget">
+            <h2>Total Phone Bill</h2>
             <div class="input">
-                <h3>Longest word puzzle</h3>
-                <label for="longWord">Please enter the sentence for the longest word puzzle: </label>
+                <label for="phoneBill">Please enter the string of calls made and SMS sent: </label>
+                <input type="text" x-model="callsSMSMade" id="phoneBill">
+            </div>
+            <div x-show="totalBillMessage" class="message" x-text="totalBillMessage">
+                Total phone bill to be displayed here...
+            </div>
+            <div>
+                <button x-on:click="calculatebill">Calculate Total Phone Bill</button>
+            </div>
+        </div>
+
+        <div class="widget" x-data="wordCrushWidget">
+            <h2>Word Crush widget</h2>
+            <div class="input">                
+                <label for="longWord">Please enter the sentence to be solved: </label>
                 <input type="text" x-model="sentence" id="longWord">
             </div>
-            <div class="message" x-text="longWordMessage">
-                Longest word to be displayed here...
-            </div>
+            <div x-show="longWordMessage" class="message" x-text="longWordMessage">
+                Longest word to be displayed here... 
+            </div> 
             <div>
                 <button x-on:click="findLong">Find the longest word in the sentence</button>
             </div>
 
             <div class="input">
-                <h3>Shortest word puzzle</h3>
-                <label for="shortWord">Please enter the sentence for shortest word puzzle : </label>
+                
+                <label for="shortWord">Please enter the sentence to be solved : </label> 
                 <input type="text" x-model="sentence" id="shortWord">
             </div>
-            <div class="message" x-text="shortWordMessage">
-                shortest word to be displayed here...
-            </div>
+            <div x-show="shortWordMessage" class="message" x-text="shortWordMessage">
+                shortest word to be displayed here... 
+            </div> 
             <div>
                 <button x-on:click="findShort">Find the shortest word in the sentence</button>
             </div>
 
             <div class="input">
-                <h3>Sum each word in a sentence</h3>
-                <label for="sum">Please enter the sentence, for words to be summed up : </label>
+             
+                <label for="sum">Please enter the sentence to be solved:  </label> 
                 <input type="text" x-model="sentence" id="sum">
             </div>
-            <div class="message" x-text="sumMessage">
-                sum of the words in a sentence to be dispayed here...
+            <div x-show="sumMessage" class="message" x-text="sumMessage">
+                sum of the words in a sentence to be dispayed here... 
             </div>
             <div>
                 <button x-on:click="findSum">Sum of the words in a sentence</button>
             </div>
-
-
-            
         </div>
     </div>
 </body>

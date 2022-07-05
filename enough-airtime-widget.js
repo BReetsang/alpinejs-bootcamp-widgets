@@ -10,6 +10,12 @@ document.addEventListener('alpine:init', () => {
 
                 const amount= enoughAirtime(this.airtimeUsage,this.availableAmount);
                 this.airtimeMessage=amount;
+                setTimeout(() => {
+                    this.airtimeMessage = '';
+                    this.airtimeUsage = '';
+                    this.availableAmount = '';
+                }, 3000);
+                
             }
         }
 
